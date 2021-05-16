@@ -1,13 +1,64 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html {
+  font-size: 62.5%;
+  /* Include padding and border in the element's total width and height:
+  */
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body,
+#root {
+  height: 100vh;
+  margin: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  /* height for header 5rem / main 1fr / footer 5rem; */
+  grid-template-rows: 5rem 1fr 5rem;
+  /* equal width for header footer and main */
+  grid-template-columns: 1fr;
+  height: 100%; /* setting this so it takes full height of the page */
+}
+
+header {
+  grid-area: header;
+  background-color: #203040;
+  color: #ffff;
+  display: flex;
+  align-items: center; /* placing vertically at center */
+  padding: 0.5rem;
+}
+
+/* main is where products will be displayed */
+main {
+  grid-area: main;
+}
+
+/* Links color */
+header a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: orange;
+}
+footer {
+  grid-area: footer;
+  background-color: #203040;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body,
+input,
+select,
+textarea {
+  font-size: 1.6rem;
+  font-family: Helvetica;
 }
