@@ -25,7 +25,7 @@ class App  extends  Component{
    }
   removeFromCart = (product) => {
   const cartItems = this.state.cartItems.slice();
-   // Filtering item who has id different than clicked item
+   // Filtering item in cart who has id different than clicked item
     
     this.setState({cartItems: cartItems.filter(x=> x._id !== product._id )})
    // storing cart items to local storage
