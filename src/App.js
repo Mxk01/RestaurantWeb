@@ -13,16 +13,25 @@ class App  extends  Component{
       products:data.products,
       size:"",
       sort:"",
-      cartItems:[]
+      cartItems:localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
 
     }
   }
-   
+
+  // this function gets called inside Cart.js  this.props.createOrder();
+   createOrder = (order) => {
+     // name will be the name of the person who placed the order
+     alert("Need to save order for " + order.name)
+   }
   removeFromCart = (product) => {
   const cartItems = this.state.cartItems.slice();
    // Filtering item who has id different than clicked item
     
     this.setState({cartItems: cartItems.filter(x=> x._id !== product._id )})
+   // storing cart items to local storage
+   localStorage.setItem("cartItems",JSON.stringify(cartItems.filter(x=> x._id !== product._id)));
+
+
   }
   addToCart = (product) =>  
   {
@@ -49,6 +58,8 @@ class App  extends  Component{
      }
 
      this.setState({ cartItems });
+     // storing cart items to local storage
+     localStorage.setItem("cartItems",JSON.stringify(cartItems));
 
   }
 
@@ -120,7 +131,11 @@ class App  extends  Component{
          {/* Showing cart items */}
          <div className="sidebar">
            {/* Number of items in cart */}
-          <Cart cartItems={this.state.cartItems}  removeFromCart={this.removeFromCart}/>
+          <Cart 
+          cartItems={this.state.cartItems}  
+          removeFromCart={this.removeFromCart}
+          createOrder={this.createOrder}
+          />
          </div>
        </div>
 
