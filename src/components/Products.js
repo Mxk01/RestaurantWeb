@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 
 // rcc for class based components
-export default class Products extends Component {
+export default class Products extends React.Component {
     constructor(props)
     {
         super(props);
