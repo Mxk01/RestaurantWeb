@@ -3,9 +3,10 @@ import formatCurrency from '../util.js'
 import Fade from 'react-reveal/Fade';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
-
+import { connect } from 'react-redux';
+import {fetchProducts} from '../actions/productActions';
 // rcc for class based components
-export default class Products extends React.Component {
+ class Products extends Component {
     constructor(props)
     {
         super(props);
@@ -21,20 +22,28 @@ export default class Products extends React.Component {
      closeModal = (product) => {
          this.setState({product:null})
      }
+
+     componentDidMount = () => {
+         // fetching products (method from props)
+         this.props.fetchProducts();
+     }
       
     render() {
         const {product} = this.state; // we reintroduce him b/c we make the modal out of the  products ul ;
         return (
             <div>
                 <Fade bottom cascade> 
-                <ul className="products">
+                 
+                    {/* Display loading message if products dont exist otherwise display ul */}
+                    {!this.props.products ?  (<div>Loading message ... </div>) :
+                    (<ul className="products">
                     {/* Looping through the products */}
                     {this.props.products.map(product=>(
                       <li key={product._id}>
                           <div className="product"> 
                        {/* When clicking this a modal pops up  */}
                       <a href={`#${product._id}`} onClick={() => this.openModal(product)}>
-                          <img src={product.image} alt={'product image'}/>
+                          <img  className="product__image"src={product.image} alt={'product image'}/>
                   
                       <p>
                           {product.title}
@@ -49,7 +58,9 @@ export default class Products extends React.Component {
                       </div>
                       </li>  
                     ))}
-                </ul>
+                </ul>)
+                }
+                
                 </Fade>
                 {/* If  product exist show modal */}
                 {/* We set is open to true when product exists */}
@@ -94,3 +105,33 @@ export default class Products extends React.Component {
         )
     }
 }
+
+// connect accepts a function which takes in state as a parameter
+// returns a part of the state that we need (e.g state.products)
+//  and an action 
+
+// Connect function also returns another function 
+// which we'll call with the name of the product that we want to
+
+// we do state.products.items b/c the ProductsReducer returns an 
+// item  
+export default connect((state) => ({products:state.products.items}),
+{fetchProducts})(Products);
+
+
+
+
+
+
+
+
+
+
+
+
+// export default connect((state)=>(
+//     // we do .items b/c this is 
+//     // returned from productsReducer function
+ 
+//      {products:state.products.items}),
+//  {fetchProducts})(Products);

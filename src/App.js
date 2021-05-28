@@ -4,6 +4,8 @@ import data  from './data.json';
 import Products from './components/Products.js';
 import Filter from './components/Filter.js';
 import Cart from './components/Cart.js'
+import store from './store';
+import {Provider} from 'react-redux'
 class App  extends  Component{
 
   constructor(props)
@@ -105,9 +107,10 @@ class App  extends  Component{
   
   render () {
   return (
+    <Provider store={store}>  
    <div className="grid-container">
      <header>
-       <a href="/">Shopping Cart </a>
+       <img className="main__logo" src="https://i.imgur.com/WBOLfa4.png" alt="" />
      </header>
 
      <main>
@@ -145,6 +148,7 @@ class App  extends  Component{
         All Rights Reserved 
      </footer>
    </div>
+   </Provider>
   );
   }
 }

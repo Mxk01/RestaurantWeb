@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 
 html {
   font-size: 62.5%;
@@ -28,11 +29,13 @@ body,
 
 header {
   grid-area: header;
-  background-color: #203040;
-  color: #ffff;
+  background-color: #ffffff;
+  color: rgb(31, 31, 31);
   display: flex;
   align-items: center; /* placing vertically at center */
   padding: 0.5rem;
+  height: 2vh;
+  margin-bottom: 10px;
 }
 
 /* main is where products will be displayed */
@@ -42,11 +45,12 @@ main {
 
 /* Links color */
 header a {
-  color: white;
+  color: rgb(19, 19, 19);
   text-decoration: none;
+  font-family: "Rubik", sans-serif;
 }
 a:hover {
-  color: orange;
+  color: #ffc312;
 }
 footer {
   grid-area: footer;
@@ -66,6 +70,13 @@ textarea {
   font-family: Helvetica;
 }
 
+body {
+  background-color: #fffafa;
+  font-family: Montserrat;
+  color: black;
+  font-weight: 900;
+}
+
 .content {
   display: flex;
   flex-wrap: wrap;
@@ -83,6 +94,7 @@ textarea {
 
 .products {
   display: flex;
+  background-color: #fdfdfd;
   justify-content: center;
   align-items: center;
   padding: 0;
@@ -99,8 +111,8 @@ textarea {
 }
 
 .product img {
-  max-width: 37rem;
-  max-height: 37rem;
+  max-width: 25rem;
+  max-height: 25rem;
 }
 .products li {
   flex: 1 1 29rem;
@@ -130,20 +142,29 @@ textarea {
 
 .button {
   padding: 1rem;
-  border: 0.1rem #f3e483 solid;
-  background-color: #ffdd00;
+  background-color: #5f27cd;
+  color: white;
+  border: none;
+  border-radius: 1.5rem;
 }
 
 .button .primary {
-  background-color: #ffc000;
+  background-color: #ae00ff;
 }
 .button:hover {
-  border: 0.1rem #ff7300 solid;
+  transform: scale(1.02);
+  cursor: pointer;
 }
 a {
   text-decoration: none;
 }
 
+select,
+select > option {
+  font-family: Montserrat;
+  color: black;
+  font-weight: 900;
+}
 .filter {
   display: flex;
   justify-content: space-between;
@@ -249,4 +270,29 @@ input {
   top: 2.5rem;
   z-index: 1000;
   cursor: pointer;
+}
+
+.product__image {
+  object-fit: cover;
+}
+
+input {
+  outline: none;
+  border: none;
+  -webkit-appearance: none;
+
+  border-bottom: 3px solid rgb(255, 198, 67);
+}
+.main__logo {
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+}
+header {
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 4px 2px -2px rgb(235, 235, 235);
 }

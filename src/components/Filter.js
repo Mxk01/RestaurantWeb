@@ -21,12 +21,11 @@ export default class Filter extends Component {
                     Filter {"  "}
                     <select value={this.props.size} onChange={(e)=>{ this.props.sortProducts(this.props.products,e.target.value)}} >
                         <option value="">All</option>
-                        <option value="XS">XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
-                        <option value="XXL">XXL</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                        <option value="Extra Large">Extra Large</option>
+             
                     </select>
                 </div>
             </div>
